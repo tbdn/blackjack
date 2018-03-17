@@ -23,6 +23,9 @@ describe('Game', function () {
         it('should generate a complete deck of 52 cards', function () {
             expect(testgame.playDeck.length, 52);
         });
-
+        
+        it('should be an score of zero after calculating it', function () {
+            expect(testgame.calculateScoreForTheHand, 0)
+        });
     });
 });
