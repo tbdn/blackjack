@@ -11,4 +11,9 @@ describe('Cards', function () {
     it('Card deck should contain 52 cards', function () {
         assert.equal(cards.deck.length, 52);
     });
+
+    it('should create a playabe card deck', function () {
+        // ToDo - Write the actual test
+        assert.equal(cards.createPlayDeck(), "To be done");
+    })
 });
