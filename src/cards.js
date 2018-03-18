@@ -58,9 +58,7 @@ const DECK = [
     {suit: 'spades', rank: 'King', value: 10}
 ];
 
-var createPlayDeck = function () {
-    return "To be done";
-};
-
 module.exports.deck = DECK;
-module.exports.createPlayDeck = createPlayDeck;
+module.exports.createPlayDeck = function () {
+    return DECK;
+};

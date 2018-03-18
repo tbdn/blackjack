@@ -14,6 +14,6 @@ describe('Cards', function () {
 
     it('should create a playabe card deck', function () {
         // ToDo - Write the actual test
-        assert.equal(cards.createPlayDeck(), "To be done");
+        assert.equal(cards.createPlayDeck(), "");
     })
 });
