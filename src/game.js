@@ -1,6 +1,14 @@
 const cards = require('./cards');
 
-var init = function () {
+var Game = function () {
+    var playDeck;
+    var playerCount;
+    var dealerCount;
+    var dealerHand;
+    var playerHand;
+};
+
+Game.prototype.init = function () {
     //ToDo - Init function
     this.playDeck = cards.createPlayDeck();
     this.playerCount = 0;
@@ -9,8 +17,8 @@ var init = function () {
     this.playerHand = [];
 };
 
-var calculateScore = function () {
-    // Calculates the scorepoints of the hand
+Game.prototype.calculateScore = function () {
+// Calculates the scorepoints of the hand
     var self = this;
     var score;
     self.playerHand.forEach(function (card) {
@@ -25,7 +33,7 @@ var calculateScore = function () {
     return score;
 };
 
-var dealACardToThePlayer = function (num) {
+Game.prototype.dealACardToThePlayer = function (num) {
     var self = this;
 
     // number of cards to deal
@@ -36,7 +44,8 @@ var dealACardToThePlayer = function (num) {
         num = 1;
     }
 
-    if (self.playDeck.length < num) {
+
+    if (self.playDeck === undefined || self.playDeck.length < num) {
         throw new Error("Noth enough cards to deal");
     }
 
@@ -51,6 +60,12 @@ var dealACardToThePlayer = function (num) {
     }
 };
 
-module.exports.init = init;
-module.exports.calculateScoreForTheHand = calculateScore;
-module.exports.dealACardToThePlayer = dealACardToThePlayer;
+module.exports = Game;
+
+/*
+module.exports = {
+    init: init,
+    calculateScoreForTheHand: calculateScore,
+    dealACardToThePlayer: dealACardToThePlayer
+};
+*/

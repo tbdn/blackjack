@@ -1,19 +1,19 @@
 const assert = require('chai').assert;
 const expect = require('chai').expect;
-const game = require('../src/game').init;
-
+const game = require('../src/game');
 
 describe('Game', function () {
 
     var testgame = null;
 
     beforeEach(function () {
-        testgame = new game;
+        testgame = new game();
+        testgame.init();
     });
 
     describe('after initialisation', function () {
         it('should give empty hands to the player', function () {
-            expect(testgame.playerCount, 0);
+            expect(testgame.playerCount,0);
         });
 
         it('should give empty hands to the dealer', function () {
@@ -32,20 +32,21 @@ describe('Game', function () {
     describe('if a new card was requested', function () {
         it('should deal a new card to the player', function () {
             var playerHandLengthBefore = testgame.playerHand.length;
-            //FIXME is not a function problem - module.exports error
             testgame.dealACardToThePlayer();
             expect(testgame.playerHand.length, playerHandLengthBefore+1);
         });
 
         it('should calculate the new score for the hand automaticly and correct', function () {
-            //FIXME is not a function problem - module.exports error
             testgame.dealACardToThePlayer();
-            expect(testgame.calculateScoreForTheHand, 1);
+            expect(testgame.calculateScore(), 1);
         });
 
         it('should only deal one new card', function () {
-            //FIXME is not a function problem - module.exports error
-            expect(testgame.dealACardToThePlayer(5), 1)
+            var playerHandLengthBefore = testgame.playerHand.length;
+            testgame.dealACardToThePlayer();
+            expect(testgame.playerHand.length, playerHandLengthBefore+1);
+            expect(testgame.dealACardToThePlayer(20), 1)
         });
     })
 });
+
